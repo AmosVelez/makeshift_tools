@@ -1,6 +1,13 @@
 alias l='ls -lah'
 alias ll='ls -lah'
 
+newmachine() {
+    local dirname=${1:-ctf_env}
+    mkdir -p "$dirname"/{backup_files,data_files,scripts,sql_dumpings}
+    touch "$dirname"/{findings,writeup,credentials}
+    echo "[*] Environment created at $(pwd)/$dirname"
+}
+
 batdiff() {
 	  git diff --name-only --relative --diff-filter=d -z $1 | xargs --null bat --diff
 }
